@@ -8,6 +8,7 @@
 	<canvas id="myCanvas" width="500" height="400"></canvas>
 	<script type="text/javascript" src="../three.js"></script>
 	<script type="text/javascript">
+
 		// bind a render
 		var renderder=new THREE.WebGLRenderer({
 			canvas: document.getElementById('myCanvas'),
@@ -24,6 +25,9 @@
 		camera.lookAt(new THREE.Vector3(0,0,0));
 		scene.add(camera);
 
+	
+		
+
 		//create a cube
 		var cube=new THREE.Mesh(new THREE.CubeGeometry(1,0.5,0.5),
 			new THREE.MeshBasicMaterial({
@@ -31,37 +35,26 @@
 			})
 		);
 		//create four toruses
-		var torus1=new THREE.Mesh(new THREE.TorusGeometry(0.1,0.05,12,18),
-			new THREE.MeshBasicMaterial({
-				color:0xE2F0D6
-			})
-		);
-		var torus2=new THREE.Mesh(new THREE.TorusGeometry(0.1,0.05,12,18),
-			new THREE.MeshBasicMaterial({
-				color:0xE2F0D6
-			})
-		);
-		var torus3=new THREE.Mesh(new THREE.TorusGeometry(0.1,0.05,12,18),
-			new THREE.MeshBasicMaterial({
-				color:0xE2F0D6
-			})
-		);
-		var torus4=new THREE.Mesh(new THREE.TorusGeometry(0.1,0.05,12,18),
-			new THREE.MeshBasicMaterial({
-				color:0xE2F0D6
-			})
-		);
+		var torus=[];
+		for(var i=1;i<5;i++){
+			torus[i]=new THREE.Mesh(new THREE.TorusGeometry(0.1,0.05,12,18),
+				new THREE.MeshBasicMaterial({
+					color:0xE2F0D6
+				})
+			);
+		}
 		//add to a scene
 		cube.position.set(0,0,0);
-		torus1.position.set(0.2,-0.2,0.3);
-		torus2.position.set(-0.2,-0.2,0.3);
-		torus3.position.set(0.2,-0.2,-0.3);
-		torus4.position.set(-0.2,-0.2,-0.3);
+		torus[1].position.set(0.2,-0.2,0.3);
+		torus[2].position.set(-0.2,-0.2,0.3);
+		torus[3].position.set(0.2,-0.2,-0.3);
+		torus[4].position.set(-0.2,-0.2,-0.3);
+		//scene.add(helloCar);
 		scene.add(cube);
-		scene.add(torus1);
-		scene.add(torus2);
-		scene.add(torus3);
-		scene.add(torus4);
+		scene.add(torus[1]);
+		scene.add(torus[2]);
+		scene.add(torus[3]);
+		scene.add(torus[4]);
 
 		//render
 		renderder.render(scene,camera);
